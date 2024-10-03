@@ -1,4 +1,4 @@
-const bfs = async (grid, initalGrid, directions,setGrid) => {
+const dfs = async (grid, initalGrid, directions,setGrid) => {
     let start = initalGrid.start
     let end = initalGrid.end
 
@@ -11,7 +11,7 @@ const bfs = async (grid, initalGrid, directions,setGrid) => {
     parentMap.set(`${start[0]}-${start[1]}`, null);
 
     while (queue.length > 0) {
-        const current = queue.shift()
+        const current = queue.pop()
         for(let [dx,dy] of directions){
             let new_row= dx+current[0]
             let new_col = dy+current[1]
@@ -23,7 +23,7 @@ const bfs = async (grid, initalGrid, directions,setGrid) => {
                     highlightPath(parentMap, end, grid, setGrid);
                     return
                 }
-                await sleep(15)
+                await sleep(18)
                 setGrid([...grid])
             }
         }
@@ -47,4 +47,4 @@ const isValid = (i, j, row, col) => {
     return i < row && i >= 0 && j < col && j >= 0;
 };
 
-export {bfs}
+export {dfs}

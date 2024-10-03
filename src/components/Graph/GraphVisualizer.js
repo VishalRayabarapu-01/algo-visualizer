@@ -4,7 +4,7 @@ import Grid from './Grid'
 import Options from './Options';
 import { setBorders, createPath, addRandomOpenings, directions } from '../Algorithms/randomMaze'
 import { bfs } from '../Algorithms/BfsAlgo';
-import { toast } from 'react-toastify';
+import {dfs} from '../Algorithms/DfsAlgo';
 const GraphVisualizer = () => {
   const [grid, setGrid] = useState([]);
   const [algorithm, setAlgorithm] = useState({
@@ -24,6 +24,7 @@ const GraphVisualizer = () => {
         isVisited: false,
         isWall: false,
         isBorder: false,
+        highlightPath:false
       }
     }
     const cols = Math.floor(window.innerWidth / 25);
@@ -47,13 +48,12 @@ const GraphVisualizer = () => {
 
   const visualizeGraph = () => {
     if (algorithm.BFS === true) {
-      bfs(grid, initialGrid,directions)
+      bfs(grid, initialGrid,directions,setGrid)
     } else if (algorithm.DFS === true) {
-
+      dfs(grid,initialGrid,directions,setGrid)
     } else if (algorithm.DIJKSTRA === true) {
 
     } else {
-      toast("Select an algorithm to run !!!!")
     }
   }
 
@@ -82,6 +82,7 @@ const GraphVisualizer = () => {
         element.isVisited = false;
         element.isWall = false
         element.isBorder = false
+        element.highlightPath=false
       });
     })
     setGrid(grid)

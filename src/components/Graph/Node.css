@@ -16,3 +16,11 @@
 .node-end{
     background-color: red;
 }
+
+.node-visited{
+    background-color: rgb(87, 210, 210);
+}
+
+.node-highlight{
+    background-color:  rgb(234, 240, 74);
+}
