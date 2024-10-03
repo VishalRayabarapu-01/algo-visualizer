@@ -1,0 +1,18 @@
+.node{
+    background-color: white;
+    outline:1px solid rgb(172, 217, 251);
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    transition: background-color 0.4s ease;
+}
+.node-wall{
+    background-color: rgb(52, 48, 48);
+    outline: none;
+}
+.node-start{
+    background-color: greenyellow;
+}
+.node-end{
+    background-color: red;
+}

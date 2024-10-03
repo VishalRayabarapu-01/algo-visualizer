@@ -1,0 +1,28 @@
+.card {
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-img-top {
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.1);
+}
+
+.btn-gradient {
+  background-image: linear-gradient(to right, #488389, #0ebaee); 
+  border: none;
+  color: white;
+  transition: background 0.3s ease; 
+}
+
+.btn-gradient:hover {
+  color: white;
+  background-image: linear-gradient(to right, #0ebaee, #488389);
+}
