@@ -30,7 +30,7 @@ const GraphVisualizer = () => {
       }
     }
     const cols = Math.floor(window.innerWidth / 25);
-    const rows = Math.floor(window.innerHeight / 25) - 5;
+    const rows = Math.floor(window.innerHeight / 25) - 6;
     let matrix = []
     for (let i = 0; i < rows; i++) {
       let row = []

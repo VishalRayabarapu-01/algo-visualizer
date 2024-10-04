@@ -4,7 +4,7 @@ import Node from './Node'
 const Grid = (props) => {
   let grid = props.grid
   return (
-    <div className='container-fluid'>
+    <div className='container-fluid mt-1'>
       {grid.map((row, idx) => {
         return <div className="row" key={`${row}-${idx}`}>
           {row.map((cell, idx1) => {
