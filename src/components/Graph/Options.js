@@ -30,16 +30,16 @@ const Options = (props) => {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item p-1">
-                            <div className="nav-link" style={obj} onClick={props.maze}>Create Maze</div>
+                            <div className="nav-link button-hover" style={obj} onClick={props.maze}>Create Maze</div>
                         </li>
                         <li class="nav-item p-1">
-                            <div className="nav-link" style={obj} onClick={props.visualizeGraph}>Visualize</div>
+                            <div className="nav-link button-hover" style={obj} onClick={props.visualizeGraph}>Visualize</div>
                         </li>
                         <li class="nav-item p-1">
-                            <div className="nav-link" style={obj} onClick={props.clearGrid}>Clear Grid</div>
+                            <div className="nav-link button-hover" style={obj} onClick={props.clearGrid}>Clear Grid</div>
                         </li>
                         <li class="nav-item p-1">
-                            <div className="nav-link" style={obj} onClick={props.clearPath}>Clear Path</div>
+                            <div className="nav-link button-hover" style={obj} onClick={props.clearPath}>Clear Path</div>
                         </li>
                     </ul>
                 </div>

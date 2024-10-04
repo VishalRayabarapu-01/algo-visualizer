@@ -24,3 +24,8 @@
 .node-highlight{
     background-color:  rgb(234, 240, 74);
 }
+
+.button-hover:hover{
+    background-color: rgb(226, 226, 216);
+    border-radius: 8px;
+}
