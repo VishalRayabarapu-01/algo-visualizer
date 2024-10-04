@@ -6,6 +6,7 @@ import { setBorders, createPath, addRandomOpenings, directions } from '../Algori
 import { bfs } from '../Algorithms/BfsAlgo';
 import { dfs } from '../Algorithms/DfsAlgo';
 import { toast } from 'react-toastify';
+import { aStar } from '../Algorithms/AStarAlgo';
 const GraphVisualizer = () => {
   const [grid, setGrid] = useState([]);
   const [algorithm, setAlgorithm] = useState({
@@ -61,7 +62,11 @@ const GraphVisualizer = () => {
       }
       dfs(grid, initialGrid, directions, setGrid)
     } else if (algorithm['A*'] === true) {
-
+      if (grid[initialGrid.start[0]][initialGrid.start[1]].highlightPath) {
+        toast.info("Please clear the grid or path and click visualise")
+        return
+      }
+      aStar(grid, initialGrid, directions, setGrid)
     } else {
       toast.error("Select an algorithm to visualise")
     }
