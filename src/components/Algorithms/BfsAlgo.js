@@ -9,7 +9,7 @@ const bfs = async (grid, initalGrid, directions,setGrid) => {
     let parentMap = new Map(); 
     queue.push(start)
     parentMap.set(`${start[0]}-${start[1]}`, null);
-
+    grid[start[0]][start[1]].isVisited=true
     while (queue.length > 0) {
         const current = queue.shift()
         for(let [dx,dy] of directions){
@@ -33,7 +33,7 @@ const bfs = async (grid, initalGrid, directions,setGrid) => {
 
 const highlightPath= async (parentMap, end, grid, setGrid)=>{
     let current=end
-    while(current!=null){
+    while(current!==null){
         grid[current[0]][current[1]].highlightPath=true
         current = parentMap.get(`${current[0]}-${current[1]}`);
         await sleep(5);

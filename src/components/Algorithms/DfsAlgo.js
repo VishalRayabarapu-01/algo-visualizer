@@ -9,7 +9,7 @@ const dfs = async (grid, initalGrid, directions,setGrid) => {
     let parentMap = new Map(); 
     queue.push(start)
     parentMap.set(`${start[0]}-${start[1]}`, null);
-
+    grid[start[0]][start[1]].isVisited=true
     while (queue.length > 0) {
         const current = queue.pop()
         for(let [dx,dy] of directions){

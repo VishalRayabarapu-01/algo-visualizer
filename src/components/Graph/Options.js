@@ -6,12 +6,12 @@ const Options = (props) => {
         current_algo='Select Algorithm'
     }
     const handleClicked=(key)=>{
-        if(key==='BFS'){
-            props.setAlgorithm({DIJKSTRA:false,DFS: false,BFS : true})
+        if(key==='BFS/DIJKSTRA'){
+            props.setAlgorithm({"A*":false,DFS: false,'BFS/DIJKSTRA' : true})
         }else if(key === 'DFS'){
-            props.setAlgorithm({DIJKSTRA:false,DFS: true,BFS : false})
+            props.setAlgorithm({"A*":false,DFS: true,'BFS/DIJKSTRA' : false})
         }else{
-            props.setAlgorithm({DIJKSTRA:true,DFS: false,BFS : false})
+            props.setAlgorithm({"A*":true,DFS: false,'BFS/DIJKSTRA' : false})
         }
     }
     return (
@@ -29,6 +29,12 @@ const Options = (props) => {
             </span>
             <span className="mx-2">
             <button className="btn text-light btn-gradient" onClick={props.visualizeGraph}>Visualize</button>
+            </span>
+            <span className="mx-2">
+            <button className="btn text-light btn-gradient" onClick={props.clearGrid}>Clear Grid</button>
+            </span>
+            <span className="mx-2">
+            <button className="btn text-light btn-gradient" onClick={props.clearPath}>Clear Path</button>
             </span>
         </div>
     )

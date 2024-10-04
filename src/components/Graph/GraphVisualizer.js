@@ -4,13 +4,14 @@ import Grid from './Grid'
 import Options from './Options';
 import { setBorders, createPath, addRandomOpenings, directions } from '../Algorithms/randomMaze'
 import { bfs } from '../Algorithms/BfsAlgo';
-import {dfs} from '../Algorithms/DfsAlgo';
+import { dfs } from '../Algorithms/DfsAlgo';
+import { toast } from 'react-toastify';
 const GraphVisualizer = () => {
   const [grid, setGrid] = useState([]);
   const [algorithm, setAlgorithm] = useState({
-    BFS: false,
-    DFS: false,
-    DIJKSTRA: false
+    "BFS/DIJKSTRA": false,
+    "DFS": false,
+    "A*": false
   });
   const [initialGrid, setInitialGrid] = useState({
     start: [],
@@ -24,7 +25,7 @@ const GraphVisualizer = () => {
         isVisited: false,
         isWall: false,
         isBorder: false,
-        highlightPath:false
+        highlightPath: false
       }
     }
     const cols = Math.floor(window.innerWidth / 25);
@@ -47,18 +48,27 @@ const GraphVisualizer = () => {
   }, [])
 
   const visualizeGraph = () => {
-    if (algorithm.BFS === true) {
-      bfs(grid, initialGrid,directions,setGrid)
+    if (algorithm['BFS/DIJKSTRA'] === true) {
+      if (grid[initialGrid.start[0]][initialGrid.start[1]].highlightPath) {
+        toast.info("Please clear the grid and click visualise")
+        return
+      }
+      bfs(grid, initialGrid, directions, setGrid)
     } else if (algorithm.DFS === true) {
-      dfs(grid,initialGrid,directions,setGrid)
-    } else if (algorithm.DIJKSTRA === true) {
+      if (grid[initialGrid.start[0]][initialGrid.start[1]].highlightPath) {
+        toast.info("Please clear the grid or path and click visualise")
+        return
+      }
+      dfs(grid, initialGrid, directions, setGrid)
+    } else if (algorithm['A*'] === true) {
 
     } else {
+      toast.error("Select an algorithm to visualise")
     }
   }
 
   const createMaze = async () => {
-    clearGrid();
+    clearGrid("called from maze");
     const newGrid = [...grid]
     const rows = newGrid.length
     const cols = newGrid[0].length
@@ -75,23 +85,41 @@ const GraphVisualizer = () => {
       maze[i + dir[0]][j + dir[1]].isWall = false
       maze[end_i + dir[0]][end_j + dir[1]].isWall = false
     }
+    maze[i][j].isWall = false
+    maze[end_i][end_j].isWall = false
   }
-  const clearGrid = () => {
+  const clearGrid = (message) => {
+    if (!grid[initialGrid.start[0]][initialGrid.start[1]].isVisited && !grid[0][0].isWall && message !== 'called from maze') {
+      toast.info("Grid is already clear !!!")
+      return
+    }
     grid.forEach((row, idx) => {
       row.forEach((element, idx1) => {
         element.isVisited = false;
         element.isWall = false
         element.isBorder = false
-        element.highlightPath=false
+        element.highlightPath = false
       });
     })
-    setGrid(grid)
+    setGrid([...grid])
   }
-
+  const clearPath = () => {
+    if (!grid[initialGrid.start[0]][initialGrid.start[1]].isVisited) {
+      toast.info("No path exist to clear !!!")
+      return
+    }
+    grid.forEach((row, idx) => {
+      row.forEach((element, idx1) => {
+        element.isVisited = false;
+        element.highlightPath = false
+      });
+    })
+    setGrid([...grid])
+  }
   return (
     <>
       <Navbar />
-      <Options algorithm={algorithm} visualizeGraph={visualizeGraph} maze={createMaze} setAlgorithm={setAlgorithm} />
+      <Options algorithm={algorithm} clearPath={clearPath} visualizeGraph={visualizeGraph} clearGrid={clearGrid} maze={createMaze} setAlgorithm={setAlgorithm} />
       <Grid grid={grid} initialGrid={initialGrid} />
     </>
   )
