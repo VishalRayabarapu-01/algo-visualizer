@@ -9,6 +9,10 @@
 .focused {
   background-color: #eaedf3;
 }
+
+.click-focused {
+  background-color: #d8d4d4;
+}
 .border-left {
   border-left: 3px solid black !important;
 }
@@ -23,11 +27,28 @@
 .border-right {
   border-right: 3px solid black !important;
 }
+
+.collision {
+  color: red;
+  background-color: aqua;
+}
 @media screen and (max-width: 500px) {
   .cell {
     background-color: white;
     width: 38px;
     height: 42px;
     transition: background-color 0.4s ease;
+  }
+
+  .focused {
+    background-color: #eaedf3 !important;
+  }
+
+  .click-focused {
+    background-color: #d8d4d4 !important;
+  }
+  .collision {
+    color: red;
+    background-color: aqua !important;
   }
 }
