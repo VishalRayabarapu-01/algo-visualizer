@@ -1,0 +1,49 @@
+.center-row {
+  display: flex;
+  justify-content: center;
+}
+.n-queen {
+  background-color: white;
+  outline: 2px solid rgb(18, 20, 21);
+  transition: background-color 0.4s ease, width 0.4s ease, height 0.4s ease;
+}
+.n-queen-large{
+  width: 55px;
+  height: 55px;
+}
+.n-queen-small{
+  width: 55px;
+  height: 55px;
+}
+.apply-black {
+  background-color: black !important;
+}
+.collision {
+  background-color: red !important;
+}
+.focused {
+  background-color: #eaedf3;
+}
+.click-focused {
+  background-color: #d8d4d4;
+}
+@media screen and (max-width: 1000px) {
+  .n-queen {
+    background-color: white;
+    outline: 2px solid rgb(18, 20, 21);
+    transition: background-color 0.4s ease, width 0.4s ease, height 0.4s ease;
+    padding-left: 10px;
+  }
+  .n-queen-large{
+    width: 47px;
+    height: 47px;
+  }
+  .n-queen-small{
+    width: 42px !important;
+    height: 42px !important;
+  }
+  .image-queen{
+    height: 2.5em;
+    width: 2em;
+  }
+}
