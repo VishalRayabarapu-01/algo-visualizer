@@ -29,8 +29,8 @@
 }
 
 .collision {
-  color: red;
-  background-color: aqua;
+  color: red !important;
+  background-color: aqua !important;
 }
 @media screen and (max-width: 500px) {
   .cell {

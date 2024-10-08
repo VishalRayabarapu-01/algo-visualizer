@@ -6,7 +6,7 @@ const Node = (props) => {
   ${props.board==='8' ? 'n-queen n-queen-small' : 'n-queen n-queen-large'}
   ${obj.applyBlack ? 'apply-black' : ''} 
   ${obj.focusSurrounding ? 'focused' : ''} 
-  ${obj.collision ? 'collision' : ''}  
+  ${obj.collision ? 'collision-nqueen' : ''}  
   ${obj.focused ? 'click-focused' : ''} `
   return (
     <div className={css}>

@@ -18,7 +18,7 @@
 .apply-black {
   background-color: black !important;
 }
-.collision {
+.collision-nqueen {
   background-color: red !important;
 }
 .focused {
